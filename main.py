@@ -1,7 +1,3 @@
-import os
-import discord
-
-
 import discord
 import os
 from discord import client
