@@ -18,6 +18,12 @@ Status = cycle(['NACL', 'Shio'])
 async def on_ready():
     change_status.start()
 
-#@tasks.loop(seconds=10)
+@tasks.loop(seconds=10)
+async def change_status():
+    await client.change_presence(Status=discord.Status.online,activity=discord.Game(next(status)))
+
+for filename in os.listdir ('./commands'):
+    if filename.endswith('.py'):
+        client.load_extension(f'commands.{filename[:-3]}')
 
 client.run(os.environ['token'])
