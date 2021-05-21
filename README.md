@@ -35,3 +35,28 @@ client.run(os.environ['token'])
 `#activity=discord.Streaming(name="내용", url="링크")   # ~ 방송 중`    
 `#activity=discord.Activity(type=discord.ActivityType.listening, name="내용")  # ~ 듣는 중`       
 `#activity=discord.Game(next(status))  #위 status에 선언된 리스트의 값들이 번갈아가며 표시됨`
+
+## cogs파일 안 명령어 기본 코드
+```python
+import discord
+from discord.ext import commands
+import time
+
+class 명령어영문이름(commands.Cog):
+    def __init__(self, client):
+        self.client = client
+
+    #cogs
+    @commands.command()
+    async def 명령어이름(self, ctx):
+        await ctx.trigger_typing()
+        # 명령어 내용 입력
+        await ctx.send(embed=embed)
+
+
+def setup(client):
+    client.add_cog(Help(client))
+```
+`한국어로 된 부분은 수정해야되는 부분 (다른 명령어와 중복 X)`   
+`명령어 내용 입력 주석 아래에 임베드를 사용해 작성하면 된다.`   
+`임베드 자료:https://nashio.tistory.com/3?category=877811`
