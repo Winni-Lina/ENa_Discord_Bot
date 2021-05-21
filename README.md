@@ -23,10 +23,6 @@ async def on_ready():
 @tasks.loop(seconds=10)
 async def change_status():
     await client.change_presence(status=discord.Status.online,activity=discord.Game(next(status)))
-    #activity=discord.Game(name="내용")                   # ~ 하는 중
-    #activity=discord.Streaming(name="내용", url="링크")   # ~ 방송 중
-    #activity=discord.Activity(type=discord.ActivityType.listening, name="내용")  # ~ 듣는 중
-    #activity=discord.Game(next(status))  #위 status에 선언된 리스트의 값들이 번갈아가며 표시됨
 
 for filename in os.listdir('./commands'):   #commands 폴더에 있는 명령어를 하나 씩 읽어옴
     if filename.endswith('.py'):
@@ -34,3 +30,8 @@ for filename in os.listdir('./commands'):   #commands 폴더에 있는 명령어
 
 client.run(os.environ['token'])
 ```
+
+`#activity=discord.Game(name="내용")                   # ~ 하는 중`
+`#activity=discord.Streaming(name="내용", url="링크")   # ~ 방송 중`
+`#activity=discord.Activity(type=discord.ActivityType.listening, name="내용")  # ~ 듣는 중`
+`#activity=discord.Game(next(status))  #위 status에 선언된 리스트의 값들이 번갈아가며 표시됨`
