@@ -13,4 +13,4 @@ class Test(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(Help(client))
+    client.add_cog(Test(client))
