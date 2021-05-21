@@ -31,7 +31,7 @@ for filename in os.listdir('./commands'):   #commands 폴더에 있는 명령어
 client.run(os.environ['token'])
 ```
 
-`#activity=discord.Game(name="내용")                   # ~ 하는 중`
-`#activity=discord.Streaming(name="내용", url="링크")   # ~ 방송 중`
-`#activity=discord.Activity(type=discord.ActivityType.listening, name="내용")  # ~ 듣는 중`
+`#activity=discord.Game(name="내용")                   # ~ 하는 중`\n
+`#activity=discord.Streaming(name="내용", url="링크")   # ~ 방송 중`\n
+`#activity=discord.Activity(type=discord.ActivityType.listening, name="내용")  # ~ 듣는 중`\n
 `#activity=discord.Game(next(status))  #위 status에 선언된 리스트의 값들이 번갈아가며 표시됨`
