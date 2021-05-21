@@ -1,21 +1,24 @@
 import discord
-from discord.ext import commands
 import os
+from discord.ext import commands, tasks
+from itertools import cycle
+import re
 
-client = commands.Bot(command_prefix = '-')
+client = commands.Bot(command_prefix='#', help_command=None)
+
+status = cycle(['미완성 봇']) #번갈아 표시할 상메
 
 @client.event
 async def on_ready():
+    change_status.start()
+    print("봇 이름:", client.user.name, "봇 아이디:", client.user.id, "봇 버전:", discord.__version__)
 
-  # [discord.Status.online = 온라인],[discord.Status.idle = 자리비움],[discord.Status.dnd = 다른용무],[discord.Status.offline = 오프라인]
-  await client.change_presence(status=discord.Status.online)
 
-  await client.change_presence(activity=discord.Game(name="게임 하는중"))
-  #await client.change_presence(activity=discord.Streaming(name="스트림 방송중", url='링크'))
-  #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="노래 듣는중"))
-  #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="영상 시청중"))
-  
-  print("봇 이름:",client.user.name,"봇 아이디:",client.user.id,"봇 버전:",discord.__version__)
-
+@tasks.loop(seconds=10)
+async def change_status():
+    await client.change_presence(status=discord.Status.online,activity=discord.Game(next(status)))
+for filename in os.listdir('./commands'):   #commands 폴더에 있는 명령어를 하나 씩 읽어옴
+    if filename.endswith('.py'):
+        client.load_extension(f'cogs.{filename[:-3]}')
 
 client.run(os.environ['token'])
