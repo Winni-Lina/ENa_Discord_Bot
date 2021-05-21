@@ -65,12 +65,13 @@ def setup(client):
         await ctx.send("내용 입력")
 ```
 ```python
-#임베드 사용 방법
+#임베드 사용 방법      자료 참고:https://nashio.tistory.com/3?category=877811
     @commands.command()
     async def 명령어이름(self, ctx):
        # 명령어 내용 입력
         await ctx.trigger_typing()
         embed = discord.Embed(title="아직 제작중입니다.")
         await ctx.send(embed=embed)
+
 ```
         
