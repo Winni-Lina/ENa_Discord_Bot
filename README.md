@@ -30,7 +30,7 @@ for filename in os.listdir('./commands'):   #commands 폴더에 있는 명령어
 
 client.run(os.environ['token'])
 ```
-상태 메세지 표시 
+상태 메세지 표시    
 `#activity=discord.Game(name="내용")                   # ~ 하는 중`      
 `#activity=discord.Streaming(name="내용", url="링크")   # ~ 방송 중`    
 `#activity=discord.Activity(type=discord.ActivityType.listening, name="내용")  # ~ 듣는 중`       
