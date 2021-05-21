@@ -49,14 +49,28 @@ class 명령어영문이름(commands.Cog):
     #cogs
     @commands.command()
     async def 명령어이름(self, ctx):
-        await ctx.trigger_typing()
         # 명령어 내용 입력
-        await ctx.send(embed=embed)
 
 
 def setup(client):
     client.add_cog(Help(client))
 ```
 `한국어로 된 부분은 수정해야되는 부분 (다른 명령어와 중복 X)`   
-`명령어 내용 입력 주석 아래에 임베드를 사용해 작성하면 된다.`   
-`임베드 자료:https://nashio.tistory.com/3?category=877811`
+`명령어 내용 입력 주석 아래에 임베드 또는 일반 메세지를 사용해 명령어 후 내용을 작성하면 된다.`  
+```python
+#메세지 사용 방법
+    @commands.command()
+    async def 명령어이름(self, ctx):
+       # 명령어 내용 입력
+        await ctx.send("내용 입력")
+```
+```python
+#임베드 사용 방법
+    @commands.command()
+    async def 명령어이름(self, ctx):
+       # 명령어 내용 입력
+        await ctx.trigger_typing()
+        embed = discord.Embed(title="아직 제작중입니다.")
+        await ctx.send(embed=embed)
+```
+        
