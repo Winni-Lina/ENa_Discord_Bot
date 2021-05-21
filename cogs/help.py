@@ -6,7 +6,7 @@ class Help(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    #commands
+    #cogs
     @commands.command()
     async def 도움(self, ctx):
         await ctx.trigger_typing()
