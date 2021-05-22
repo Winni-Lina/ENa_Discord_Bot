@@ -1,4 +1,4 @@
-# discordbot
+# disbot
 Luke-68 님과 제작중인 디스코드 봇 disbot입니다
 `초대 링크: https://discord.com/api/oauth2/authorize?client_id=844981326218264607&permissions=0&scope=bot`
 
