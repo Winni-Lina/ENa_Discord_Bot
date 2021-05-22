@@ -8,17 +8,19 @@ Luke-68 님과 제작중인 디스코드 봇 disbot입니다
     - 비쥬얼 스튜디오(프로그래밍 툴)
     - 깃허브 데스크탑(깃허브 commit and push)
     - 파이참 (Python 설치 후(Path설정 필수), 설치 / Tester 프로그램)
-
-
+   
+   
 ## 봇 base 제작 (개인설정은 생략함)
 (봇 몸체(?) 제작)
 1. Discord Developer Portal(사이트)에서 새로운 `Application` 추가   
 2. `Bot`카테고리에서 `Build-A-Bot`에 `Add Bot`클릭 후, `Token` 메모장에 메모   
 3. `OAuth2`카테고리에서 `Oauth2 URL Generator`에 `Bot`체크 후, 아래 링크 메모 (봇 초대 링크)   
    
+   
 (봇 메모리 제작)   
 1. 깃허브 새로운 `Repository` 제작    
     - 다른 사람이 봐도 되는 자료라면 `public` 아니라면 `private`   
+   
    
 (봇 기초 프로그래밍)   
 1. 깃허브 데스크탑에서 `Repository`를 `file`메뉴에서 `Clne Repository`선택   
@@ -69,7 +71,8 @@ Luke-68 님과 제작중인 디스코드 봇 disbot입니다
             client.run(os.environ['token'])
 
         ```
-4. 깃허브 데스크탑에서 위 파일들을 `Commit`, `Push`를 진행   
+5. 깃허브 데스크탑에서 위 파일들을 `Commit`, `Push`를 진행   
+   
    
 (24시간 구동(호스팅))   
 1. 하루쿠 사이트에서 새로운 `app` 제작   
@@ -78,8 +81,8 @@ Luke-68 님과 제작중인 디스코드 봇 disbot입니다
 4. `Deploy`에 `Github Repository`연결 후, 맨 아래 `Manual deploy`에서 `Deploy Branch` 클릭   
 5. `Deploy Branch` 클릭 후, 끝났다면, `Overveiw` 들어가서 `Dyno formation` 옆 `Configure Dyno` 클릭   
 6. `Resources`에서 `worker`을 통해`봇 온오프 설정`(오른쪽 on/왼쪽 off)   
-
-
+   
+   
 ## 봇 Tester 세팅 (Pycharm)
 1. 새로운 `Project` 생성 (이름은 Temp)) (인터프리터 따로 설정하기 위함)
 2. 생성한 `Project` 로딩 끝나면, `File`에서 `Project close`
