@@ -1,7 +1,41 @@
 # discordbot
 Luke-68 님과 제작중인 디스코드 봇 disbot입니다
-
 `초대 링크: https://discord.com/api/oauth2/authorize?client_id=844981326218264607&permissions=0&scope=bot`
+
+- 봇 제작 툴
+    - 하루쿠(호스팅 페이지) -> 깃허브(하루쿠와의 연동)
+    - 비쥬얼 스튜디오(프로그래밍 툴)
+    - 깃허브 데스크탑(깃허브 commit and push)
+    - 파이참 (Tester 프로그램)
+
+
+## 봇 base 제작
+
+1. 깃허브 새로운 Repository 제작 
+    - 다른 사람이 봐도 되는 자료라면 public 아니라면 private
+
+2. 깃허브 데스크탑에서 제작한 Repository를 cloning
+3. 해당 Repository를 선택한 후, Changes를 눌러 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##  main.py 메모
 ```python
 import discord
