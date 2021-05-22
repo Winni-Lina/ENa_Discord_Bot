@@ -3,11 +3,11 @@ Luke-68 님과 제작중인 디스코드 봇 disbot입니다
 `초대 링크: https://discord.com/api/oauth2/authorize?client_id=844981326218264607&permissions=0&scope=bot`
 
 - 봇 제작 툴
-    - Discord Developer Portal(봇 몸체(?) 제작 사이트)
+    - Discord Developer Portal(봇 몸체(?) 제작 사이트)  (extensions에서 python 다운 받아둘 것!)
     - 하루쿠(호스팅 페이지) -> 깃허브(하루쿠와의 연동)
     - 비쥬얼 스튜디오(프로그래밍 툴)
     - 깃허브 데스크탑(깃허브 commit and push)
-    - 파이참 (Tester 프로그램)
+    - 파이참 (Python 설치 후(Path설정 필수), 설치 / Tester 프로그램)
 
 
 ## 봇 base 제작 (개인설정은 생략함)
@@ -80,6 +80,14 @@ Luke-68 님과 제작중인 디스코드 봇 disbot입니다
 6. `Resources`에서 `worker`을 통해`봇 온오프 설정`(오른쪽 on/왼쪽 off)   
 
 
+## 봇 Tester 세팅 (Pycharm)
+1. 새로운 `Project` 생성 (이름은 Temp)) (인터프리터 따로 설정하기 위함)
+2. 생성한 `Project` 로딩 끝나면, `File`에서 `Project close`
+3. 기본 경로를 기준으로 파일탐색창에서 `C:\Users\(사용자이름)\Documents\GitHub`에 있는 자신의 봇 파일을 복사해 `C:\Users\(사용자이름)\PycharmProjects`에 붙여넣기
+4. `Pycharm`에서 `Open File or Project` 복사한 파일 열기
+5. `cog`폴더와 `main.py`를 제외한 모든 파일 제거
+6. `main.py`에 마지막 `client.run('복사한 토큰값으로 수정')`
+7. 하루쿠를 오프 후, `main.py`를 작동 시켰을 때, 봇이 `on`된다면, 테스트 파일 완성
 
 
 
