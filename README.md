@@ -8,11 +8,11 @@ import discord
 import os
 from discord.ext import commands, tasks
 from itertools import cycle
-import re
 
 client = commands.Bot(command_prefix='#', help_command=None)
 
-status = cycle(['미완성 봇']) #번갈아 표시할 상메
+status = cycle(['미완성 봇'])  # 번갈아 표시할 상메
+
 
 @client.event
 async def on_ready():
@@ -22,13 +22,15 @@ async def on_ready():
 
 @tasks.loop(seconds=10)
 async def change_status():
-    await client.change_presence(status=discord.Status.online,activity=discord.Game(next(status)))
+    await client.change_presence(status=discord.Status.online, activity=discord.Game(next(status)))
 
-for filename in os.listdir('./commands'):   #commands 폴더에 있는 명령어를 하나 씩 읽어옴
+
+for filename in os.listdir('./cogs'):  # cogs 폴더에 있는 명령어를 하나 씩 읽어옴
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
 client.run(os.environ['token'])
+
 ```
 - 상태 메세지 표시    
 `#activity=discord.Game(name="내용")                   # ~ 하는 중`      
@@ -40,20 +42,21 @@ client.run(os.environ['token'])
 ```python
 import discord
 from discord.ext import commands
-import time
+
 
 class 명령어영문이름(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    #cogs
+    # cogs
     @commands.command()
     async def 명령어이름(self, ctx):
         # 명령어 내용 입력
-
+        
 
 def setup(client):
-    client.add_cog(Help(client))
+    client.add_cog(명령(client))
+
 ```
 `한국어로 된 부분은 수정해야되는 부분 (다른 명령어와 중복 X)`   
 `명령어 내용 입력 주석 아래에 임베드 또는 일반 메세지를 사용해 명령어 후 내용을 작성하면 된다.`  
@@ -70,7 +73,7 @@ def setup(client):
     async def 명령어이름(self, ctx):
        # 명령어 내용 입력
         await ctx.trigger_typing()
-        embed = discord.Embed(title="아직 제작중입니다.")
+        embed = discord.Embed(title="알맞는 내용 입력")
         await ctx.send(embed=embed)
 
 ```
