@@ -3,21 +3,82 @@ Luke-68 님과 제작중인 디스코드 봇 disbot입니다
 `초대 링크: https://discord.com/api/oauth2/authorize?client_id=844981326218264607&permissions=0&scope=bot`
 
 - 봇 제작 툴
+    - Discord Developer Portal(봇 몸체(?) 제작 사이트)
     - 하루쿠(호스팅 페이지) -> 깃허브(하루쿠와의 연동)
     - 비쥬얼 스튜디오(프로그래밍 툴)
     - 깃허브 데스크탑(깃허브 commit and push)
     - 파이참 (Tester 프로그램)
 
 
-## 봇 base 제작
+## 봇 base 제작 (개인설정은 생략함)
+(봇 몸체(?) 제작)
+1. Discord Developer Portal(사이트)에서 새로운 `Application` 추가
+2. `Bot`카테고리에서 `Build-A-Bot`에 `Add Bot`클릭 후, `Token` 메모장에 메모
+3. `OAuth2`카테고리에서 `Oauth2 URL Generator`에 `Bot`체크 후, 아래 링크 메모 (봇 초대 링크)
 
-1. 깃허브 새로운 Repository 제작 
-    - 다른 사람이 봐도 되는 자료라면 public 아니라면 private
+(봇 메모리 제작)
+4. 깃허브 새로운 `Repository` 제작 
+    - 다른 사람이 봐도 되는 자료라면 `public` 아니라면 `private`
 
-2. 깃허브 데스크탑에서 제작한 Repository를 cloning
-3. 해당 Repository를 선택한 후, Changes를 눌러 
+(봇 기초 프로그래밍)
+5. 깃허브 데스크탑에서 `Repository`를 `file`메뉴에서 `Clne Repository`선택
+6. `Github.com`에서 사용할 `Repository`를 선택 후, 클론 제작
+7. 해당 `Repository`를 선택 후, `Changes` 클릭한 후, 오른쪽 화면에 있는 `Open in Visual Studio Code` 클릭
+8. 아래 파일 또는 폴더들 제작   (파일명 아래에 있는 박스칸은 파일의 내용)
+    - cogs (폴더)
+    - runtime.txt  
+        ```
+            python-3.8.8
+        ```
+    - requirements.txt
+        ```
+            discord.py
+            asyncio
+        ```
+    - Procfile
+        ```
+            worker: python main.py
+        ```
+    - main.py 
+        - 내용
+        ```python
+            import discord
+            import os
+            from discord.ext import commands, tasks
+            from itertools import cycle
+
+            client = commands.Bot(command_prefix='#', help_command=None)
+
+            status = cycle(['미완성 봇'])  # 번갈아 표시할 상메
 
 
+            @client.event
+            async def on_ready():
+                change_status.start()
+                print("봇 이름:", client.user.name, "봇 아이디:", client.user.id, "봇 버전:", discord.__version__)
+
+
+            @tasks.loop(seconds=10)
+            async def change_status():
+                await client.change_presence(status=discord.Status.online, activity=discord.Game(next(status)))
+
+
+            for filename in os.listdir('./cogs'):  # cogs 폴더에 있는 명령어를 하나 씩 읽어옴
+                if filename.endswith('.py'):
+                    client.load_extension(f'cogs.{filename[:-3]}')
+
+            client.run(os.environ['token'])
+
+        ```
+9. 깃허브 데스크탑에서 위 파일들을 `Commit`, `Push`를 진행
+
+(24시간 구동(호스팅))
+10. 하루쿠 사이트에서 새로운 `app` 제작
+11. `app` 들어가서 `setting`에 `add buildpack` 클릭 후, `Python` 선택
+12. 그 위 `Reveal Config Vars`에서 `Key`에 `token`입력, `Value`에 `메모장에 메모한 token값`입력
+13. `Deploy`에 `Github Repository`연결 후, 맨 아래 `Manual deploy`에서 `Deploy Branch` 클릭
+14. `Deploy Branch` 클릭 후, 끝났다면, `Overveiw` 들어가서 `Dyno formation` 옆 `Configure Dyno` 클릭
+15. `Resources`에서 `worker`을 통해`봇 온오프 설정`(오른쪽 on/왼쪽 off)
 
 
 
