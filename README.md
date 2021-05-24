@@ -160,7 +160,7 @@ class 명령어영문이름(commands.Cog):
         
 
 def setup(client):
-    client.add_cog(명령어영문이름(윗부분이랑 같음)(client))
+    client.add_cog(명령어영문이름(client))
 
 ```
 `한국어로 된 부분은 수정해야되는 부분 (다른 명령어와 중복 X)`   
