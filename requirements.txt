@@ -1,2 +1,4 @@
 discord.py
 asyncio
+beautifulsoup4
+requests
