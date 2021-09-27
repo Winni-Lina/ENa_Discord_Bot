@@ -23,6 +23,7 @@ class sendMsg(commands.Cog):
             embed.set_footer(text="%04d/%02d/%02d %02d:%02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec))
             user = await self.client.fetch_user(int(textlist[0]))
             await DMChannel.send(user, embed=embed)
+            await ctx.send(f"전송 완료했습니다. / 유저: {user.name} / 메세지: {text}")
         else:
             if str(ctx.author.id) in self.ignore_id:
                 await ctx.send('차단되어있습니다.')
