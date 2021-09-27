@@ -7,7 +7,7 @@ import re
 token = "Token"
 client= commands.Bot(command_prefix='~e', help_command=None)
 
-status = cycle(['E.Na 봇 작동중', '테스트 중입니다.'])
+status = cycle(['status')
 
 @client.event
 async def on_ready():
