@@ -4,7 +4,7 @@ from itertools import cycle
 import os
 
 token = open("./ignore/token.txt", "r").readline()
-client = commands.Bot(command_prefix='~e ', help_command=None)
+client = commands.Bot(command_prefix='~', help_command=None)
 
 status = cycle(['E.Na 봇 작동', '테스트'])
 
