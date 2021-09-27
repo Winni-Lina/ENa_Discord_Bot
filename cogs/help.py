@@ -10,7 +10,7 @@ class Help(commands.Cog):
     async def 도움(self, ctx):
         await ctx.trigger_typing()
 
-        embed = discord.Embed(title="도움말", description="이 봇은 아직 미완성인 봇입니다.", color=0x62c1cc)
+        embed = discord.Embed(title="도움말", description="이 봇은 아직 미완성인 E.Na봇입니다.", color=0x62c1cc)
         embed.add_field(name='**도움**', value='명령어 목록을 보여줍니다.', inline=False)
         embed.add_field(name='**명령어**', value='`핑`, `초대링크`, `영화랭킹`')
         embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/843370400225820672/844955931531935804/ReactNative-snapshot-image4472701035798000406.jpg')
