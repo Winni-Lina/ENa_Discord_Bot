@@ -1,23 +1,24 @@
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
+from itertools import cycle
+import os
+import re
 
-class Help(commands.Cog):
-    def __init__(self, client):
-        self.client = client
+token = "Token"
+client= commands.Bot(command_prefix='~e', help_command=None)
 
-    #cogs
-    @commands.command()
-    async def 도움(self, ctx):
-        await ctx.trigger_typing()
+status = cycle(['E.Na 봇 작동중', '테스트 중입니다.'])
 
-        embed = discord.Embed(title="도움말", description="이 봇은 아직 미완성인 봇입니다.", color=0x62c1cc)
-        embed.add_field(name='**도움**', value='명령어 목록을 보여줍니다.', inline=False)
-        embed.add_field(name='**명령어**', value='`핑`, `초대링크`, `영화랭킹`')
-        embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/843370400225820672/844955931531935804/ReactNative-snapshot-image4472701035798000406.jpg')
-        embed.set_footer(text='made by 루크#8209, Jin。#5499', icon_url='https://cdn.discordapp.com/attachments/843370400225820672/844955931531935804/ReactNative-snapshot-image4472701035798000406.jpg')
-        embed.add_field(name='명령어 추가 요청', value='명령어 형태로 제작할 예정입니다.', inline=False)
-        await ctx.send(embed=embed)
+@client.event
+async def on_ready():
+    change_status.start()
 
+@tasks.loop(seconds=10)
+async def change_status():
+    await client.change_presence(status=discord.Status.online, activity=discord.Game(next(status)))
 
-def setup(client):
-    client.add_cog(Help(client))
+for filename in os.listdir('./Cogs'):
+    if filename.endswith('.py'):
+        client.load_extension(f'cogs.{filename[:-3]}')
+
+client.run(token)
