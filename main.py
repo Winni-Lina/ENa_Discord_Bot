@@ -4,10 +4,10 @@ from itertools import cycle
 import os
 import re
 
-token = "Token"
-client= commands.Bot(command_prefix='~e', help_command=None)
+token = open("token", "r").readline()
+client = commands.Bot(command_prefix='~e', help_command=None)
 
-status = cycle(['status')
+status = cycle(['E.Na 봇 작동중', '테스트 중입니다.'])
 
 @client.event
 async def on_ready():
@@ -22,3 +22,4 @@ for filename in os.listdir('./Cogs'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
 client.run(token)
+
