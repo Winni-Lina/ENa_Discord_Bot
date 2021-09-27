@@ -1,6 +1,7 @@
 # disbot
-Luke-68 님과 제작중인 디스코드 봇 disbot입니다
-`초대 링크: https://discord.com/api/oauth2/authorize?client_id=844981326218264607&permissions=0&scope=bot`
+개인적으로 제작중인 Discord Bot입니다
+
+`초대 링크: https://discord.com/api/oauth2/authorize?client_id=882995163427913738&permissions=8&scope=bot`
 
 - 봇 제작 툴
     - Discord Developer Portal(봇 몸체(?) 제작 사이트)  (extensions에서 python 다운 받아둘 것!)
@@ -30,7 +31,7 @@ Luke-68 님과 제작중인 디스코드 봇 disbot입니다
     - cogs (폴더)   
     - runtime.txt   
         ```
-            python-3.8.8
+            python-3.8.8    (파이썬 버전에 맞춰서)
         ```
     - requirements.txt   
         ```
