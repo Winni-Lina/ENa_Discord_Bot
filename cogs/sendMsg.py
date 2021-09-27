@@ -3,9 +3,11 @@ from discord.ext import commands
 from discord import DMChannel
 import time
 
-class sendmsg(commands.Cog):
+class sendMsg(commands.Cog):
     def __init__(self, client):
         self.client = client
+        ignoreUser = open("./ignore/token.txt", "r").readline()
+        self.ignore_id = ignoreUser.split(",")
 
     #cogs
     @commands.command()
@@ -22,17 +24,20 @@ class sendmsg(commands.Cog):
             user = await self.client.fetch_user(int(textlist[0]))
             await DMChannel.send(user, embed=embed)
         else:
-            mygu = self.client.get_guild(790535644883320842)
-            botch = mygu.get_channel(892019559807209473)
+            if str(ctx.author.id) in self.ignore_id:
+                await ctx.send('차단되어있습니다.')
+            else:
+                mygu = self.client.get_guild(790535644883320842)
+                botch = mygu.get_channel(892019559807209473)
 
-            embed = discord.Embed(title="[ 메세지가 도착했습니다 ]", description=f"```{text}```", color=0x62c1cc)
-            embed.set_author(name=f"{ctx.author.name}")
-            embed.add_field(name="유저 id", value=ctx.author.id)
-            embed.set_thumbnail(url=ctx.author.avatar_url)
-            embed.set_footer(text="%04d/%02d/%02d %02d:%02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec))
+                embed = discord.Embed(title="[ 메세지가 도착했습니다 ]", description=f"```{text}```", color=0x62c1cc)
+                embed.set_author(name=f"{ctx.author.name}")
+                embed.add_field(name="유저 id", value=ctx.author.id)
+                embed.set_thumbnail(url=ctx.author.avatar_url)
+                embed.set_footer(text="%04d/%02d/%02d %02d:%02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec))
 
-            await botch.send(embed=embed)
+                await botch.send(embed=embed)
 
 
 def setup(client):
-    client.add_cog(sendmsg(client))
+    client.add_cog(sendMsg(client))
