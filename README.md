@@ -1,4 +1,4 @@
-# disbot
+# E.Na Bot
 개인적으로 제작중인 Discord Bot입니다
 
 `초대 링크: https://discord.com/api/oauth2/authorize?client_id=882995163427913738&permissions=8&scope=bot`
