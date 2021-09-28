@@ -6,7 +6,7 @@ import os
 token = open("./ignore/token.txt", "r").readline()
 client = commands.Bot(command_prefix='~', help_command=None)
 
-status = cycle(['E.Na 봇 작동', '테스트'])
+status = cycle(['E.Na 봇 작동', '정상 작동'])
 
 @client.event
 async def on_ready():

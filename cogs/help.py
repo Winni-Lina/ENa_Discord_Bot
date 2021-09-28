@@ -10,12 +10,12 @@ class Help(commands.Cog):
     async def 도움(self, ctx):
         await ctx.trigger_typing()
 
-        embed = discord.Embed(title="도움말", description="이 봇은 아직 미완성인 E.Na봇입니다.", color=0x62c1cc)
+        embed = discord.Embed(title="도움말", description="이 봇은 성장중인 E.Na봇입니다.", color=0x62c1cc)
         embed.add_field(name='**도움**', value='명령어 목록을 보여줍니다.', inline=False)
         embed.add_field(name='**명령어**', value='`핑`, `초대링크`, `영화랭킹`')
         embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/891875793783902218/891875843826135040/29841_R8odfZL3.png')
         embed.set_footer(text='made by BLUE#7608', icon_url='https://cdn.discordapp.com/avatars/777496131177414656/eedb299fd8b1860a80b15a5c0c5d5168.webp?size=1024')
-        embed.add_field(name='**봇 요청하기**', value='요청', inline=False)
+        embed.add_field(name='봇 요청, 건의', value=f'`요청` (내용) / `전송` (내용)', inline=False)
         await ctx.send(embed=embed)
 
 

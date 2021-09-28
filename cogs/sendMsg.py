@@ -29,7 +29,7 @@ class sendMsg(commands.Cog):
                 await ctx.send('차단되어있습니다.')
             else:
                 mygu = self.client.get_guild(790535644883320842)
-                botch = mygu.get_channel(892019559807209473)
+                botch = mygu.get_channel(892043333931773992)
 
                 embed = discord.Embed(title="[ 메세지가 도착했습니다 ]", description=f"```{text}```", color=0x62c1cc)
                 embed.set_author(name=f"{ctx.author.name}")
