@@ -11,7 +11,7 @@ class InviteLink(commands.Cog):
         await ctx.trigger_typing()
 
         embed = discord.Embed(title='Disbot 봇을 초대할 수 있는 링크입니다', color=0x62c1cc)
-        embed.add_field(name='초대링크', value='https://discord.com/api/oauth2/authorize?client_id=882995163427913738&permissions=8&scope=bot')
+        embed.add_field(name='초대링크', value='[Link](<https://discord.com/api/oauth2/authorize?client_id=882995163427913738&permissions=8&scope=bot>)')
         await ctx.send(embed=embed)
 
 

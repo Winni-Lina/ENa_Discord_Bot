@@ -5,7 +5,7 @@ import time
 class request(commands.Cog):
     def __init__(self, client):
         self.client = client
-        ignoreUser = open("./ignore/ignoreUser.txt", "r").readline()
+        ignoreUser = open("./file/ignoreUser.txt", "r",encoding='utf-8').readline()
         self.ignore_id = ignoreUser.split(",")
 
     #cogs
@@ -15,11 +15,11 @@ class request(commands.Cog):
             await ctx.send('차단되어있습니다.')
         else:
             now = time.localtime()
-            mygu = self.client.get_guild(790535644883320842)
-            botch = mygu.get_channel(892019559807209473)
+            mygu = self.client.get_guild(894257659237236776)
+            botch = mygu.get_channel(894268412434473061)
 
-            embed1 = discord.Embed(title='[ 새로운 요청이 도착했습니다 ]', description=f'요청자: {ctx.author}\n    요청자 id: {ctx.author.id}', color=0x62c1cc)
-            embed1.add_field(name='요청 내용', value=f"**text**", inline=True)
+            embed1 = discord.Embed(title='[ 새로운 요청이 도착했습니다 ]', description=f'요청자: {ctx.author}\n요청자 id: {ctx.author.id}', color=0x62c1cc)
+            embed1.add_field(name='요청 내용', value=f"**```{text}```**", inline=True)
             embed1.set_thumbnail(url=ctx.author.avatar_url)
             embed1.set_footer(text="%04d/%02d/%02d %02d:%02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec))
             await botch.send(f"<@777496131177414656>")

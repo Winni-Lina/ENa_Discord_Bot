@@ -6,7 +6,7 @@ import time
 class sendMsg(commands.Cog):
     def __init__(self, client):
         self.client = client
-        ignoreUser = open("./ignore/token.txt", "r").readline()
+        ignoreUser = open("./file/ignoreUser.txt", "r", encoding='utf-8').readline()
         self.ignore_id = ignoreUser.split(",")
 
     #cogs
@@ -19,7 +19,7 @@ class sendMsg(commands.Cog):
             embed = discord.Embed(title="[ 메세지가 도착했습니다 ]", description=f"```{text}```", color=0x62c1cc)
             embed.set_author(url=ctx.author.avatar_url, name='E.Na Developer: BLUE#7608')
             embed.set_thumbnail(url=ctx.author.avatar_url)
-            embed.add_field(name="**답장하기**", value="~`전송` (내용)")
+            embed.add_field(name="**답장하기**", value="`~전송` (내용)")
             embed.set_footer(text="%04d/%02d/%02d %02d:%02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec))
             user = await self.client.fetch_user(int(textlist[0]))
             await DMChannel.send(user, embed=embed)
@@ -28,16 +28,18 @@ class sendMsg(commands.Cog):
             if str(ctx.author.id) in self.ignore_id:
                 await ctx.send('차단되어있습니다.')
             else:
-                mygu = self.client.get_guild(790535644883320842)
-                botch = mygu.get_channel(892043333931773992)
+                mygu = self.client.get_guild(894257659237236776)
+                botch = mygu.get_channel(894268416196767764)
 
                 embed = discord.Embed(title="[ 메세지가 도착했습니다 ]", description=f"```{text}```", color=0x62c1cc)
                 embed.set_author(name=f"{ctx.author.name}")
                 embed.add_field(name="유저 id", value=ctx.author.id)
                 embed.set_thumbnail(url=ctx.author.avatar_url)
                 embed.set_footer(text="%04d/%02d/%02d %02d:%02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec))
-
                 await botch.send(embed=embed)
+
+                embed = discord.Embed(title="[ 성공적으로 메세지가 전송되었습니다 ]", description='불쾌감을 주는 메세지인 경우, 차단의 대상이 되실 수 있습니다.',color=0x62c1cc)
+                await ctx.send(embed=embed)
 
 
 def setup(client):

@@ -3,15 +3,17 @@ from discord.ext import commands, tasks
 from itertools import cycle
 import os
 
-token = open("./ignore/token.txt", "r").readline()
+# token = open("./ignore/token.txt", "r").readline()
+token = os.environ['token']
 client = commands.Bot(command_prefix='~', help_command=None)
 
-status = cycle(['E.Na 봇 작동', '정상 작동'])
+status = cycle([f'E.Na 봇 작동', f'"~도움"을 통해 명령어 확인!'])
 
 @client.event
 async def on_ready():
     change_status.start()
     print("이나 봇 작동 시작합니다.")
+
 
 @tasks.loop(seconds=10)
 async def change_status():
