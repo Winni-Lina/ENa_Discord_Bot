@@ -8,7 +8,7 @@ class Check(commands.Cog):
     #cogs
     @commands.command()
     async def 체크(self, ctx):
-        await ctx.send(f"I'm in {len(self.client.guilds)} servers!")
+        await ctx.send(f"현재 총 {len(self.client.guilds)}개의 서버에 있어요!")
         print(self.client)
 
 
