@@ -44,8 +44,6 @@ class Block(commands.Cog):
                                               description=f"차단 해제 유저 닉네임(id): {await self.client.fetch_user(int(unblock_id))} ({unblock_id})",
                                               color=0x62c1cc)
                         await ctx.send(embed=embed)
-                elif int(text_list[0]=="텍스트파일"):
-                    await ctx.send(file=discord.File("./file/ignoreUser.txt"))
                 elif int(text_list[0]):
                     if text_list[0] in self.ignore_ids:
                         embed = discord.Embed(title="[ 해당 유저는 이미 차단 되어 있습니다 ]",

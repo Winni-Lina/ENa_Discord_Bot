@@ -8,8 +8,13 @@ class Receive_Money(commands.Cog):
     def __init__(self, client):
         self.client = client
 
+
+
+
+
     #cogs
     @commands.command()
+    @commands.cooldown(1, 60, commands.BucketType.user)
     async def 돈줘(self, ctx):
 
         users_money_text = open("./file/money.txt", "r", encoding='utf-8').readline()
@@ -27,7 +32,15 @@ class Receive_Money(commands.Cog):
         money = randint(2500, 4500)
 
         if int(user_info[0]) > 0:
-            embed = discord.Embed(title="[ 아직 기능이 완성되지 않았어요..ㅠ ]", description='개발자님께 요청을 보내시면, 돈을 드릴거에여', color=0x62c1cc)
+            user_info[1] = str(int(user_info[1])+money)
+            users_money[index] = f"{user_info[0]} {user_info[1]}"
+            save = open("./file/money.txt", "w", encoding="utf-8")
+
+            if len(users_money) > 1:
+                save.write(",".join(users_money))
+            save.close()
+            embed = discord.Embed(title=f"[ {money} E-Coin을 획득하셨습니다! ]", description=f'**총 E-Coin: {user_info[1]}**',color=0x62c1cc)
+            embed.set_footer(text='1분마다 받으실 수 있습니다. 반응이 없다면 1분이 안된거에요!')
             await ctx.send(embed=embed)
         else:
             add = open("./file/money.txt", "a", encoding="utf-8")

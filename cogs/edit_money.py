@@ -3,7 +3,7 @@ from discord import DMChannel
 from discord.ext import commands
 
 
-class Give_Money(commands.Cog):
+class Edit_Money(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -56,4 +56,4 @@ class Give_Money(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(Give_Money(client))
+    client.add_cog(Edit_Money(client))
